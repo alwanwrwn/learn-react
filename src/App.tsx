@@ -9,11 +9,33 @@ function App() {
   //
   //
 
+  let data = {
+    title: "tes react 2",
+    description: "deskripsi tes react",
+    status: "in review",
+  };
+
+  const AddNew = () => {
+    fetch(
+      `http://127.0.0.1:8000/api/create?title=${data.title}&description=${data.description}&status=${data.status}`,
+      {
+        method: "POST",
+        // body: JSON.stringify(data),
+      },
+    ).then((Response) => {
+      console.log(Response);
+    });
+  };
+
+  const TestClick = () => {
+    console.log("clicked");
+  };
+
   const status_list = ["in progress", "to do", "done", "in review"];
 
   return (
     <>
-      <div className="container py-2">
+      <div className="container py-2 h-100">
         <div className="row">
           <h1 className="col-11">
             <b>Task Management</b>
@@ -21,8 +43,7 @@ function App() {
           <button
             type="button"
             className="btn btn-primary col-1"
-            data-bs-toggle="modal"
-            data-bs-target="#newTaskModal"
+            onClick={AddNew}
             id="addButton"
           >
             <svg
@@ -41,7 +62,7 @@ function App() {
           </button>
         </div>
 
-        <div className="row py-2 overflow-hidden">
+        <div className="row py-2 overflow-hidden h-90">
           {status_list.map((stat) => (
             <Tab status={stat} key={stat} />
           ))}

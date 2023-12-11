@@ -23,7 +23,10 @@ function Tab({ status }: Props) {
   }, []);
 
   return (
-    <div className="col card bg-secondary py-2 border-0 mx-2" key={status}>
+    <div
+      className="col card bg-secondary py-2 border-0 mx-2 h-100"
+      key={status}
+    >
       <h2 className="text-white">{status}</h2>
       <div className="card-body overflow-scroll p-0">
         {cards.map((card) => (
