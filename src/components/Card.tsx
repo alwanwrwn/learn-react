@@ -11,6 +11,12 @@ function Card({ id, title, description }: Props) {
     });
   };
 
+  const UpdateCard = () => {
+    fetch(`http://127.0.0.1:8000`, {
+      method: "PUT",
+    });
+  };
+
   return (
     <>
       <div className="card mt-1">
